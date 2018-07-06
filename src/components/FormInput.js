@@ -43,8 +43,9 @@ export default createReactClass({
 	select () {
 		this.input.select();
 	},
+
 	getRef (ref) {
-		this.target = ref;
+		this.input = ref;
 
 		if (this.props.innerRef) {
 			this.props.innerRef(ref);
