@@ -52,7 +52,7 @@ export default createReactClass({
 			<span className={iconClass} />
 		);
 
-		const children = React.Children.toArray(his.props.children)
+		const children = React.Children.toArray(this.props.children)
 		const firstChild = children[0]
 		const restChildren = children.slice(1)
 
