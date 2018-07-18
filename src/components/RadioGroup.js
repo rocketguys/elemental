@@ -8,6 +8,7 @@ export default createReactClass({
 	displayName: 'RadioGroup',
 	propTypes: {
 		alwaysValidate: PropTypes.bool,
+		disabled: PropTypes.bool,
 		className: PropTypes.string,
 		inline: PropTypes.bool,
 		label: PropTypes.string,
@@ -71,7 +72,7 @@ export default createReactClass({
 		var self = this;
 
 		// props
-		var props = blacklist(this.props, 'alwaysValidate', 'label', 'onChange', 'options', 'required', 'requiredMessage', 'value', 'inline');
+		var props = blacklist(this.props, 'alwaysValidate', 'label', 'onChange', 'options', 'required', 'requiredMessage', 'value', 'inline', 'disabled');
 
 		// classes
 		var componentClass = classNames('FormField', {
@@ -91,9 +92,12 @@ export default createReactClass({
 
 		// options
 		var radios = this.props.options.map(function (radio, i) {
+			const radioClass = classNames('Radio__input', {
+				'Radio--disabled': this.props.disabled,
+			});
 			return (
 				<label key={'radio-' + i} className="Radio">
-					<input value={radio.value} type="radio" onChange={self.handleChange} onBlur={self.handleBlur} name={self.props.name} className="Radio__input" />
+					<input value={radio.value} type="radio" onChange={self.handleChange} onBlur={self.handleBlur} name={self.props.name} className={radioClass} />
 					<span className="Radio__label">{radio.label}</span>
 				</label>
 			);
