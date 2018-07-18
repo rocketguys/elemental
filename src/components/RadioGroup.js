@@ -27,6 +27,7 @@ export default createReactClass({
 		return {
 			isValid: true,
 			validationIsActive: this.props.alwaysValidate,
+			currentValue: this.props.value
 		};
 	},
 	componentDidMount () {
@@ -44,6 +45,9 @@ export default createReactClass({
 				});
 			}
 			this.validateInput(newProps.value);
+		}
+		if (newProps.value !== this.props.value){
+			this.setState({currentValue: newProps.value})
 		}
 	},
 	handleChange (e) {
@@ -92,12 +96,12 @@ export default createReactClass({
 
 		// options
 		var radios = this.props.options.map(function (radio, i) {
-			const radioClass = classNames('Radio__input', {
+			const radioClass = classNames('Radio', {
 				'Radio--disabled': this.props.disabled,
 			});
 			return (
-				<label key={'radio-' + i} className="Radio">
-					<input value={radio.value} type="radio" onChange={self.handleChange} onBlur={self.handleBlur} name={self.props.name} className={radioClass} />
+				<label key={'radio-' + i} className={radioClass}>
+					<input value={radio.value} checked={self.state.currentValue == radio.value ? true : false} type="radio" onChange={self.handleChange} onBlur={self.handleBlur} name={self.props.name} className="Radio__input" disabled={this.props.disabled} />
 					<span className="Radio__label">{radio.label}</span>
 				</label>
 			);
