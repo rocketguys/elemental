@@ -52,8 +52,9 @@ export default createReactClass({
 			<span className={iconClass} />
 		);
 
-		const firstChild = this.props.children[0]
-		const restChildren = this.props.children.slice(1)
+		const children = React.Children.toArray(his.props.children)
+		const firstChild = children[0]
+		const restChildren = children.slice(1)
 
 		return (
 			<FormField {...props}>
