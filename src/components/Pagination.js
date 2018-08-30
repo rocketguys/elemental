@@ -61,12 +61,12 @@ export default createReactClass({
 			count = label(params);
 		} else {
 			if (!total) {
-				count = 'No ' + (plural || 'records');
+				count = 'Нет ' + (plural || 'записей');
 			} else if (total > pageSize) {
 				const { start, end } = range(this.props);
-				count = `Showing ${start} to ${end} of ${total}`;
+				count = `Показываем ${start}–${end} из ${total}`;
 			} else {
-				count = 'Showing ' + total;
+				count = 'Всего ' + total;
 				if (total > 1 && plural) {
 					count += ' ' + plural;
 				} else if (total === 1 && singular) {
