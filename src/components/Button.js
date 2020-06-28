@@ -12,6 +12,7 @@ const BUTTON_TYPES = [
 	'default-success',
 	'default-warning',
 	'default-danger',
+	'hollow-default',
 	'hollow-primary',
 	'hollow-success',
 	'hollow-warning',
