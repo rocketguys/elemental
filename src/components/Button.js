@@ -1,5 +1,4 @@
 const React = require('react');
-const PropTypes = require('prop-types');
 const classNames = require('classnames');
 const blacklist = require('blacklist');
 const createReactClass = require('create-react-class');
@@ -33,16 +32,6 @@ const BUTTON_TYPES = [
 
 export default createReactClass({
 	displayName: 'Button',
-	propTypes: {
-		block: PropTypes.bool,
-		className: PropTypes.string,
-		component: PropTypes.element,
-		href: PropTypes.string,
-		isActive: PropTypes.bool,
-		size: PropTypes.oneOf(BUTTON_SIZES),
-		submit: PropTypes.bool,
-		type: PropTypes.oneOf(BUTTON_TYPES),
-	},
 	getDefaultProps () {
 		return {
 			type: 'default',
